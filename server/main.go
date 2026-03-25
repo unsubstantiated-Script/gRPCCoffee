@@ -27,7 +27,7 @@ func (s *server) PlaceOrder(ctx context.Context, order *pb.Order) (*pb.Receipt, 
 	return &pb.Receipt{Id: "ABC123"}, nil
 }
 
-func (s *server) GeOrderStatus(ctx context.Context, receipt *pb.Receipt) (*pb.OrderStatus, error) {
+func (s *server) GetOrderStatus(ctx context.Context, receipt *pb.Receipt) (*pb.OrderStatus, error) {
 	return &pb.OrderStatus{
 		OrderId: receipt.Id,
 		Status:  "In Progress",
