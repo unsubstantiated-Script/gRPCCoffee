@@ -4,12 +4,22 @@ package coffeeshop;
 option go_package = "github.com/unsubstantiated-Script/gRPCCoffee";
 
 service CoffeeShop {
-  rpc GetMenu (MenuRequest) returns (stream Menu) {}
+  rpc GetMenu (MenuRequest) returns (Menu) {}
   rpc PlaceOrder (Order) returns (Receipt) {}
   rpc GetOrderStatus (Receipt) returns (OrderStatus) {}
 }
 
 message MenuRequest {}
+
+message Menu {
+  repeated Item items = 1;
+}
+
+
+message Item {
+  string id = 1;
+  string name = 2;
+}
 
 message Order {
   repeated Item items = 1;
@@ -24,11 +34,4 @@ message OrderStatus {
   string status = 2;
 }
 
-message Menu {
-  repeated Item items = 1;
-}
 
-message Item {
-  string id = 1;
-  double name = 2;
-}
